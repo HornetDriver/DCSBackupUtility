@@ -1,0 +1,4 @@
+D:\DCSBackupUtility\obj\Release\net8.0-windows\win-x64\DCSBackupUtility.GeneratedMSBuildEditorConfig.editorconfig
+D:\DCSBackupUtility\obj\Release\net8.0-windows\win-x64\DCSBackupUtility.AssemblyInfoInputs.cache
+D:\DCSBackupUtility\obj\Release\net8.0-windows\win-x64\DCSBackupUtility.AssemblyInfo.cs
+D:\DCSBackupUtility\obj\Release\net8.0-windows\win-x64\DCSBackupUtility.csproj.CoreCompileInputs.cache
