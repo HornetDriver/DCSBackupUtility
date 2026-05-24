@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
@@ -23,15 +24,15 @@ namespace DCSBackupUtility
             txtPrimaryBackup.Text = _config.BackupPath;
             txtSecondaryBackup.Text = _config.SecondaryBackupPath;
 
-            cmbFrequency.Items.Clear();
-            cmbFrequency.Items.AddRange(new[]
+            cmbScheduleFrequency.Items.Clear();
+            cmbScheduleFrequency.Items.AddRange(new[]
             {
-                "Hourly",
                 "Daily",
-                "Weekly"
+                "Weekly",
+                "Monthly"
             });
 
-            cmbFrequency.SelectedItem = _config.BackupFrequency;
+            cmbScheduleFrequency.SelectedItem = _config.BackupFrequency;
 
             numPrimaryRetention.Value = _config.PrimaryRetentionCount;
             numSecondaryRetention.Value = _config.SecondaryRetentionCount;
@@ -67,7 +68,7 @@ namespace DCSBackupUtility
             _config.SecondaryBackupPath = txtSecondaryBackup.Text;
 
             _config.BackupFrequency =
-                cmbFrequency.SelectedItem?.ToString() ?? "Daily";
+                cmbScheduleFrequency.SelectedItem?.ToString() ?? "Daily";
 
             _config.PrimaryRetentionCount =
                 (int)numPrimaryRetention.Value;
@@ -83,6 +84,18 @@ namespace DCSBackupUtility
             }
 
             _config.Save();
+            if (chkScheduledBackup.Checked)
+            {
+                BackupTaskScheduler.CreateOrUpdateTask(
+                    cmbScheduleFrequency.SelectedItem?.ToString() ?? "Daily"
+                );
+
+                MessageBox.Show("Scheduled task created or updated.");
+            }
+            else
+            {
+                BackupTaskScheduler.DeleteTask();
+            }
 
             MessageBox.Show("Configuration saved.");
         }
@@ -151,6 +164,28 @@ namespace DCSBackupUtility
         private void label2_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void cmbScheduleFrequency_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnReadMe_Click(object sender, EventArgs e)
+        {
+            string readmePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "README.md");
+
+            if (!File.Exists(readmePath))
+            {
+                MessageBox.Show("README.md was not found.");
+                return;
+            }
+
+            Process.Start(new ProcessStartInfo
+            {
+                FileName = readmePath,
+                UseShellExecute = true
+            });
         }
     }
 }

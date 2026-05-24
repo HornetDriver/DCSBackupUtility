@@ -20,6 +20,11 @@
 	<ItemGroup>
 	  <Content Include="Resources\dcs_backup_utility_icon.ico" />
 	</ItemGroup>
+	<ItemGroup>
+  		<None Update="README.md">
+    		<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+  		</None>
+	</ItemGroup>
 
 	<ItemGroup>
 	  <Compile Update="Properties\Resources.Designer.cs">
@@ -41,6 +46,10 @@
 	    <Pack>True</Pack>
 	    <PackagePath>\</PackagePath>
 	  </None>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <PackageReference Include="TaskScheduler" Version="2.12.2" />
 	</ItemGroup>
 
 </Project>

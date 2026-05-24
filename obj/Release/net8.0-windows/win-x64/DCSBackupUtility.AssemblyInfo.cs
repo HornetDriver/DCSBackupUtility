@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DCSBackupUtility")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+827ae6a5fc01bfaa0f385f4c6cf5ece58e2e4ea8")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f23915fd382020f7b159380a582e6caed042ebd1")]
 [assembly: System.Reflection.AssemblyProductAttribute("DCSBackupUtility")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DCSBackupUtility")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

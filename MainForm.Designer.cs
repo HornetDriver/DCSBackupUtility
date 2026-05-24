@@ -35,7 +35,7 @@
             btnBrowseSecondary = new Button();
             txtPrimaryBackup = new TextBox();
             txtSecondaryBackup = new TextBox();
-            cmbFrequency = new ComboBox();
+            cmbScheduleFrequency = new ComboBox();
             numPrimaryRetention = new NumericUpDown();
             numSecondaryRetention = new NumericUpDown();
             checkedListPaths = new CheckedListBox();
@@ -45,6 +45,9 @@
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
+            chkScheduledBackup = new CheckBox();
+            btnReadMe = new Button();
+            label4 = new Label();
             ((System.ComponentModel.ISupportInitialize)numPrimaryRetention).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numSecondaryRetention).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -52,7 +55,7 @@
             // 
             // btnSave
             // 
-            btnSave.Location = new Point(123, 311);
+            btnSave.Location = new Point(45, 311);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(96, 23);
             btnSave.TabIndex = 0;
@@ -62,11 +65,11 @@
             // 
             // btnRunBackup
             // 
-            btnRunBackup.Location = new Point(232, 311);
+            btnRunBackup.Location = new Point(147, 311);
             btnRunBackup.Name = "btnRunBackup";
-            btnRunBackup.Size = new Size(97, 23);
+            btnRunBackup.Size = new Size(162, 23);
             btnRunBackup.TabIndex = 1;
-            btnRunBackup.Text = "Run Backup";
+            btnRunBackup.Text = "Run on demand backup";
             btnRunBackup.UseVisualStyleBackColor = true;
             btnRunBackup.Click += btnRunBackup_Click;
             // 
@@ -104,14 +107,14 @@
             txtSecondaryBackup.Size = new Size(225, 23);
             txtSecondaryBackup.TabIndex = 5;
             // 
-            // cmbFrequency
+            // cmbScheduleFrequency
             // 
-            cmbFrequency.FormattingEnabled = true;
-            cmbFrequency.Location = new Point(126, 222);
-            cmbFrequency.Name = "cmbFrequency";
-            cmbFrequency.Size = new Size(121, 23);
-            cmbFrequency.TabIndex = 6;
-            cmbFrequency.Visible = false;
+            cmbScheduleFrequency.FormattingEnabled = true;
+            cmbScheduleFrequency.Location = new Point(379, 216);
+            cmbScheduleFrequency.Name = "cmbScheduleFrequency";
+            cmbScheduleFrequency.Size = new Size(121, 23);
+            cmbScheduleFrequency.TabIndex = 6;
+            cmbScheduleFrequency.SelectedIndexChanged += cmbScheduleFrequency_SelectedIndexChanged;
             // 
             // numPrimaryRetention
             // 
@@ -192,11 +195,43 @@
             label3.TabIndex = 15;
             label3.Text = "Location";
             // 
+            // chkScheduledBackup
+            // 
+            chkScheduledBackup.AutoSize = true;
+            chkScheduledBackup.Location = new Point(45, 220);
+            chkScheduledBackup.Name = "chkScheduledBackup";
+            chkScheduledBackup.Size = new Size(144, 19);
+            chkScheduledBackup.TabIndex = 17;
+            chkScheduledBackup.Text = "Create Scheduled Task";
+            chkScheduledBackup.UseVisualStyleBackColor = true;
+            // 
+            // btnReadMe
+            // 
+            btnReadMe.Location = new Point(315, 311);
+            btnReadMe.Name = "btnReadMe";
+            btnReadMe.Size = new Size(75, 23);
+            btnReadMe.TabIndex = 18;
+            btnReadMe.Text = "README";
+            btnReadMe.UseVisualStyleBackColor = true;
+            btnReadMe.Click += btnReadMe_Click;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(311, 219);
+            label4.Name = "label4";
+            label4.Size = new Size(62, 15);
+            label4.TabIndex = 19;
+            label4.Text = "Frequency";
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(691, 356);
+            Controls.Add(label4);
+            Controls.Add(btnReadMe);
+            Controls.Add(chkScheduledBackup);
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
@@ -206,7 +241,7 @@
             Controls.Add(checkedListPaths);
             Controls.Add(numSecondaryRetention);
             Controls.Add(numPrimaryRetention);
-            Controls.Add(cmbFrequency);
+            Controls.Add(cmbScheduleFrequency);
             Controls.Add(txtSecondaryBackup);
             Controls.Add(txtPrimaryBackup);
             Controls.Add(btnBrowseSecondary);
@@ -224,7 +259,7 @@
         }
 
         #endregion
-        private ComboBox cmbFrequency;
+        private ComboBox cmbScheduleFrequency;
         private NumericUpDown numPrimaryRetention;
         private NumericUpDown numSecondaryRetention;
         private CheckedListBox checkedListPaths;
@@ -240,5 +275,8 @@
         private Label label1;
         private Label label2;
         private Label label3;
+        private CheckBox chkScheduledBackup;
+        private Button btnReadMe;
+        private Label label4;
     }
 }
