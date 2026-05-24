@@ -93,10 +93,10 @@ namespace DCSBackupUtility
                     zipFile);
                 ApplyRetentionPolicy(
                     config.BackupPath,
-                    config.RetentionCount);
+                    config.PrimaryRetentionCount);
                 ApplyRetentionPolicy(
                     config.SecondaryBackupPath,
-                    config.RetentionCount);
+                    config.SecondaryRetentionCount);
 
                 //
                 // Secondary backup location

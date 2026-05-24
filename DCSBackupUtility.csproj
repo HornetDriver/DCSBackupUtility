@@ -14,6 +14,7 @@
 		<IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
 		<EnableCompressionInSingleFile>true</EnableCompressionInSingleFile>
 		<ApplicationIcon>Resources\dcs_backup_utility_icon.ico</ApplicationIcon>
+		<PackageIcon>dcs_backup_utility_icon.ico</PackageIcon>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -33,6 +34,13 @@
 	    <Generator>ResXFileCodeGenerator</Generator>
 	    <LastGenOutput>Resources.Designer.cs</LastGenOutput>
 	  </EmbeddedResource>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Update="Resources\dcs_backup_utility_icon.ico">
+	    <Pack>True</Pack>
+	    <PackagePath>\</PackagePath>
+	  </None>
 	</ItemGroup>
 
 </Project>

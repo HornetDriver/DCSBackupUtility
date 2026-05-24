@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Drawing;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
@@ -21,14 +20,10 @@ namespace DCSBackupUtility
 
         private void LoadConfiguration()
         {
-            txtPrimaryBackup.Text =
-                _config.BackupPath;
-
-            txtSecondaryBackup.Text =
-                _config.SecondaryBackupPath;
+            txtPrimaryBackup.Text = _config.BackupPath;
+            txtSecondaryBackup.Text = _config.SecondaryBackupPath;
 
             cmbFrequency.Items.Clear();
-
             cmbFrequency.Items.AddRange(new[]
             {
                 "Hourly",
@@ -36,14 +31,10 @@ namespace DCSBackupUtility
                 "Weekly"
             });
 
-            cmbFrequency.SelectedItem =
-                _config.BackupFrequency;
+            cmbFrequency.SelectedItem = _config.BackupFrequency;
 
-            numPrimaryRetention.Value =
-                _config.PrimaryRetentionCount;
-
-            numSecondaryRetention.Value =
-                _config.SecondaryRetentionCount;
+            numPrimaryRetention.Value = _config.PrimaryRetentionCount;
+            numSecondaryRetention.Value = _config.SecondaryRetentionCount;
 
             checkedListPaths.Items.Clear();
 
@@ -62,35 +53,21 @@ namespace DCSBackupUtility
 
             foreach (string item in items)
             {
-                bool isChecked =
-                    _config.SelectedBackupItems.Contains(item);
-
-                checkedListPaths.Items.Add(
-                    item,
-                    isChecked);
+                bool isChecked = _config.SelectedBackupItems.Contains(item);
+                checkedListPaths.Items.Add(item, isChecked);
             }
 
-            bool secondaryEnabled =
-                !string.IsNullOrWhiteSpace(
-                    txtSecondaryBackup.Text);
-
             numSecondaryRetention.Enabled =
-                secondaryEnabled;
+                !string.IsNullOrWhiteSpace(txtSecondaryBackup.Text);
         }
 
-        private void btnSave_Click(
-            object? sender,
-            EventArgs e)
+        private void btnSave_Click(object? sender, EventArgs e)
         {
-            _config.BackupPath =
-                txtPrimaryBackup.Text;
-
-            _config.SecondaryBackupPath =
-                txtSecondaryBackup.Text;
+            _config.BackupPath = txtPrimaryBackup.Text;
+            _config.SecondaryBackupPath = txtSecondaryBackup.Text;
 
             _config.BackupFrequency =
-                cmbFrequency.SelectedItem?.ToString()
-                ?? "Daily";
+                cmbFrequency.SelectedItem?.ToString() ?? "Daily";
 
             _config.PrimaryRetentionCount =
                 (int)numPrimaryRetention.Value;
@@ -100,33 +77,23 @@ namespace DCSBackupUtility
 
             _config.SelectedBackupItems.Clear();
 
-            foreach (object checkedItem
-                in checkedListPaths.CheckedItems)
+            foreach (object checkedItem in checkedListPaths.CheckedItems)
             {
-                _config.SelectedBackupItems.Add(
-                    checkedItem.ToString()!);
+                _config.SelectedBackupItems.Add(checkedItem.ToString()!);
             }
 
             _config.Save();
 
-            MessageBox.Show(
-                "Configuration saved.");
+            MessageBox.Show("Configuration saved.");
         }
 
-        private async void btnRunBackup_Click(
-            object? sender,
-            EventArgs e)
+        private async void btnRunBackup_Click(object? sender, EventArgs e)
         {
             try
             {
-                lblStatus.Text =
-                    "Running backup...";
-
-                progressBar.Style =
-                    ProgressBarStyle.Marquee;
-
+                lblStatus.Text = "Running backup...";
+                progressBar.Style = ProgressBarStyle.Marquee;
                 progressBar.MarqueeAnimationSpeed = 30;
-
                 btnRunBackup.Enabled = false;
 
                 await Task.Run(() =>
@@ -134,24 +101,16 @@ namespace DCSBackupUtility
                     BackupManager.RunBackup(_config);
                 });
 
-                progressBar.Style =
-                    ProgressBarStyle.Blocks;
-
+                progressBar.Style = ProgressBarStyle.Blocks;
                 progressBar.Value = 100;
+                lblStatus.Text = "Backup completed.";
 
-                lblStatus.Text =
-                    "Backup completed.";
-
-                MessageBox.Show(
-                    "Backup completed successfully.");
+                MessageBox.Show("Backup completed successfully.");
             }
             catch (Exception ex)
             {
-                progressBar.Style =
-                    ProgressBarStyle.Blocks;
-
-                lblStatus.Text =
-                    "Backup failed.";
+                progressBar.Style = ProgressBarStyle.Blocks;
+                lblStatus.Text = "Backup failed.";
 
                 MessageBox.Show(ex.Message);
             }
@@ -161,47 +120,36 @@ namespace DCSBackupUtility
             }
         }
 
-        private void btnBrowsePrimary_Click(
-            object? sender,
-            EventArgs e)
+        private void btnBrowsePrimary_Click(object? sender, EventArgs e)
         {
-            using FolderBrowserDialog dialog =
-                new FolderBrowserDialog();
+            using FolderBrowserDialog dialog = new FolderBrowserDialog();
 
             if (dialog.ShowDialog() == DialogResult.OK)
             {
-                txtPrimaryBackup.Text =
-                    dialog.SelectedPath;
+                txtPrimaryBackup.Text = dialog.SelectedPath;
             }
         }
 
-        private void btnBrowseSecondary_Click(
-            object? sender,
-            EventArgs e)
+        private void btnBrowseSecondary_Click(object? sender, EventArgs e)
         {
-            using FolderBrowserDialog dialog =
-                new FolderBrowserDialog();
+            using FolderBrowserDialog dialog = new FolderBrowserDialog();
 
             if (dialog.ShowDialog() == DialogResult.OK)
             {
-                txtSecondaryBackup.Text =
-                    dialog.SelectedPath;
+                txtSecondaryBackup.Text = dialog.SelectedPath;
 
                 numSecondaryRetention.Enabled =
-                    !string.IsNullOrWhiteSpace(
-                        txtSecondaryBackup.Text);
+                    !string.IsNullOrWhiteSpace(txtSecondaryBackup.Text);
             }
         }
 
-        private void InitializeComponent()
+        private void lblStatus_Click(object sender, EventArgs e)
         {
-            SuspendLayout();
-            // 
-            // MainForm
-            // 
-            ClientSize = new Size(495, 261);
-            Name = "MainForm";
-            ResumeLayout(false);
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
 
         }
     }
