@@ -48,6 +48,7 @@
             chkScheduledBackup = new CheckBox();
             btnReadMe = new Button();
             label4 = new Label();
+            label5 = new Label();
             ((System.ComponentModel.ISupportInitialize)numPrimaryRetention).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numSecondaryRetention).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -55,7 +56,7 @@
             // 
             // btnSave
             // 
-            btnSave.Location = new Point(45, 311);
+            btnSave.Location = new Point(44, 298);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(96, 23);
             btnSave.TabIndex = 0;
@@ -65,7 +66,7 @@
             // 
             // btnRunBackup
             // 
-            btnRunBackup.Location = new Point(147, 311);
+            btnRunBackup.Location = new Point(146, 298);
             btnRunBackup.Name = "btnRunBackup";
             btnRunBackup.Size = new Size(162, 23);
             btnRunBackup.TabIndex = 1;
@@ -207,7 +208,7 @@
             // 
             // btnReadMe
             // 
-            btnReadMe.Location = new Point(315, 311);
+            btnReadMe.Location = new Point(314, 298);
             btnReadMe.Name = "btnReadMe";
             btnReadMe.Size = new Size(75, 23);
             btnReadMe.TabIndex = 18;
@@ -224,11 +225,21 @@
             label4.TabIndex = 19;
             label4.Text = "Frequency";
             // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(196, 331);
+            label5.Name = "label5";
+            label5.Size = new Size(161, 15);
+            label5.TabIndex = 20;
+            label5.Text = "Released under gplv3 license.";
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(691, 356);
+            Controls.Add(label5);
             Controls.Add(label4);
             Controls.Add(btnReadMe);
             Controls.Add(chkScheduledBackup);
@@ -278,5 +289,6 @@
         private CheckBox chkScheduledBackup;
         private Button btnReadMe;
         private Label label4;
+        private Label label5;
     }
 }
